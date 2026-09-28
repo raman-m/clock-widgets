@@ -1,5 +1,10 @@
-﻿# analogue-clock.ps1
-#
+﻿param(
+    [Parameter(Position = 0)]
+    [Alias('o')]
+    [ValidateRange(0.05, 1.0)]
+    [double]$Opacity = 1.0
+)
+
 Set-StrictMode -Version latest
 
 Add-Type -AssemblyName System.Drawing
@@ -19,7 +24,8 @@ $script:form.Height = 700
 $script:form.Width = $form.Height
 $script:form.BackColor=[Drawing.Color]::White
 $script:form.Location.X = 1000
-$script:form.TransparencyKey = [Drawing.Color]::Brown
+# $script:form.TransparencyKey = [Drawing.Color]::White
+$script:form.Opacity = $Opacity
 
 $script:clockRadius = $form.Height / 2
 $script:CentreRadius = $form.Height / 45
